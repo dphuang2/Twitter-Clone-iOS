@@ -40,7 +40,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-    The whole project was very difficult because of all the different things that we did to make the project more organized and easier to understand. But once I looked over the code for awhile I understood it. I didn't get to finish retweets and favorites but I will continue to implement more features in the future.'
+The whole project was very difficult because of all the different things that we did to make the project more organized and easier to understand. But once I looked over the code for awhile I understood it. I didn't get to finish retweets and favorites but I will continue to implement more features in the future.'
 
 ## License
 
