@@ -58,7 +58,7 @@ The whole project was very difficult because of all the different things that we
     See the License for the specific language governing permissions and
     limitations under the License.
     
-# Project 5 - *Twitter-Clone Improved*
+# Project 5 - *Twitter Clone Improved*
 
 Time spent: **20** hours spent in total
 
