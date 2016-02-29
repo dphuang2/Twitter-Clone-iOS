@@ -18,9 +18,21 @@ class Tweet: NSObject {
     var user: User?
     var favoritesCount: Int?
     var retweetCount: Int?
+    var retweeted: Int!
+    var favorited: Int!
+    var id: String!
+    var followersCount: Int!
+    var followingCount: Int!
+    var tweetCount: Int!
     
     
     init(dictionary: NSDictionary){
+        tweetCount = dictionary["user"]!["statuses_count"] as? Int
+        followingCount = dictionary["user"]!["friends_count"] as? Int
+        followersCount = dictionary["user"]!["followers_count"] as? Int
+        id = dictionary["id_str"] as? String
+        retweeted = Int((dictionary["retweeted"] as? Int)!)
+        favorited = Int((dictionary["favorited"] as? Int)!)
         user = User(dictionary: dictionary["user"] as! NSDictionary)
         text = dictionary["text"] as? String
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0

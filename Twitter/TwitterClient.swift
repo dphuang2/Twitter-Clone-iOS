@@ -13,7 +13,7 @@ class TwitterClient: BDBOAuth1SessionManager
 {
     
 
-    static let sharedInstance = TwitterClient(baseURL: NSURL(string: "https://api.twitter.com")!, consumerKey: "AwvzOdrWDL4ZGDUpgulzdYKU7", consumerSecret: "JzcM0JuFbUmmH8KGetCuJRuwfI5NLGiFLK6MKbj9mzHhPxfwgj")
+    static let sharedInstance = TwitterClient(baseURL: NSURL(string: "https://api.twitter.com")!, consumerKey: "ifrPb6A9YEONrViS6OaRLjCyP", consumerSecret: "yUlJG6baPag4F4f6XtIvuvJ8orLN0Xlk6lKoBCu0I8UYsmUhC3")
     var loginSuccess: (() -> ())?
     var loginFailure: ((NSError) -> ())?
     
@@ -92,5 +92,46 @@ class TwitterClient: BDBOAuth1SessionManager
         })
         
     }
+    
+    func postTweet(text: String!, success: () -> (), failure: (NSError) -> ()){
+        POST("1.1/statuses/update.json?status=\(text)", parameters: nil, progress: nil, success: {(task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            print("you posted a tweet")
+            
+            
+            }, failure: {(task: NSURLSessionDataTask?, error: NSError) -> Void in
+                failure(error)
+        })
+    }
+    
+    func replyTweet(text: String!, id: String!, success: () -> (), failure: (NSError) -> ()){
+        POST("1.1/statuses/update.json?status=\(text)&in_reply_to_status_id=\(id)", parameters: nil, progress: nil, success: {(task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            print("you replied to a tweet")
+            print("1.1/statuses/update.json?status=\(text)&in_reply_to_status_id=\(id)")
+            
+            }, failure: {(task: NSURLSessionDataTask?, error: NSError) -> Void in
+                failure(error)
+        })
+    }
+    
+    func favoriteTweet(id: String!, success: () -> (), failure: (NSError) -> ()){
+        POST("1.1/favorites/create.json?id=\(id)", parameters: nil, progress: nil, success: {(task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            print("you favorited a tweet")
+            
+            }, failure: {(task: NSURLSessionDataTask?, error: NSError) -> Void in
+                failure(error)
+        })
+    }
+    
+    func unfavoriteTweet(id: String!, success: () -> (), failure: (NSError) -> ()){
+        POST("1.1/favorites/destroy.json?id=\(id)", parameters: nil, progress: nil, success: {(task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            print("you unfavorited a tweet")
+            
+            }, failure: {(task: NSURLSessionDataTask?, error: NSError) -> Void in
+                failure(error)
+        })
+    }
 
+    
+    
+    
 }

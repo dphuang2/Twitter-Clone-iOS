@@ -10,7 +10,7 @@ import UIKit
 
 class User: NSObject {
     
-    var name: NSString?
+    var name: NSString!
     var screenname: NSString?
     var profileURL: NSURL?
     var profileUrlString: String?
@@ -20,7 +20,7 @@ class User: NSObject {
     
     init(dictionary: NSDictionary){
         self.dictionary = dictionary
-        name = dictionary["name"] as? String
+        name = dictionary["name"] as! String
         screenname = dictionary["screen_name"] as? String
         
         profileUrlString = dictionary["profile_image_url_https"] as? String
